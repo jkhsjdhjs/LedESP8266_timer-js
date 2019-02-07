@@ -1,0 +1,24 @@
+{
+  "name": "ledesp8266_timer",
+  "version": "1.0.0",
+  "description": "Timer for controlling/observing the ESP using the backend",
+  "main": "src/index.mjs",
+  "scripts": {
+    "start": "node --experimental-modules src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkhsjdhjs/LedESP8266_timer-js.git"
+  },
+  "author": "jkhsjdhjs",
+  "license": "UNLICENSED",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/jkhsjdhjs/LedESP8266_timer-js/issues"
+  },
+  "homepage": "https://github.com/jkhsjdhjs/LedESP8266_timer-js#readme",
+  "dependencies": {
+    "ws": "^6.1.3"
+  }
+}

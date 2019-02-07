@@ -1,0 +1,8 @@
+[Unit]
+Description=Timer for controlling/observing the ESP using the backend
+
+[Timer]
+OnCalendar=*:0/5
+
+[Install]
+WantedBy=timers.target
