@@ -44,9 +44,9 @@ const color_compare = (c1, c2) =>
 const date_add_state_runtime = (date, duration) => {
     const splitted = duration.split(":");
     date.setHours(
-        date.getHours() + parseInt(splitted[0]),
-        date.getMinutes() + parseInt(splitted[1]),
-        date.getSeconds() + parseInt(splitted[2])
+        date.getHours() + (parseInt(splitted[0]) || 0),
+        date.getMinutes() + (parseInt(splitted[1]) || 0),
+        date.getSeconds() + (parseInt(splitted[2]) || 0)
     );
     return date;
 }
@@ -131,11 +131,11 @@ const change_state_timeout = async ws => {
             throw "\"states\" isn't an array!";
         if(!cfg.states.every(s =>
             typeof s.duration === "string"
-         && /\d+:\d{2}:\d{2}/.test(s.duration)
+         && /^\d*(?::\d*){0,3}$/.test(s.duration)
          && s.color
-         && typeof s.color.red === "number"
-         && typeof s.color.green === "number"
-         && typeof s.color.blue === "number"
+         && is_number(s.color.red)
+         && is_number(s.color.green)
+         && is_number(s.color.blue)
          && s.color.red >= 0
          && s.color.green >= 0
          && s.color.blue >= 0
