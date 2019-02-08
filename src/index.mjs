@@ -44,9 +44,9 @@ const color_compare = (c1, c2) =>
 const date_add_state_runtime = (date, duration) => {
     const splitted = duration.split(":");
     date.setHours(
-        date.getHours() + splitted[0],
-        date.getMinutes() + splitted[1],
-        date.getSeconds() + splitted[2]
+        date.getHours() + parseInt(splitted[0]),
+        date.getMinutes() + parseInt(splitted[1]),
+        date.getSeconds() + parseInt(splitted[2])
     );
     return date;
 }
@@ -155,19 +155,19 @@ const change_state_timeout = async ws => {
 (() => {
     let ws = new WebSocket(cfg.url);
     let interval_ref;
-    
+
     const event_listener_open = () => {
         console.log("connected!");
         interval(ws);
         interval_ref = setInterval(interval, cfg.check_interval, ws);
         change_state_timeout(ws);
     }
-    
+
     const event_listener_error = error => {
         console.error("a websocket error occured!");
         console.error(error);
     };
-    
+
     const event_listener_close = async (code, reason) => {
         clearInterval(interval_ref);
         ws.removeAllListeners();
@@ -179,7 +179,7 @@ const change_state_timeout = async ws => {
         ws.on("error", event_listener_error);
         ws.on("close", event_listener_close);
     };
-    
+
     ws.on("open", event_listener_open);
     ws.on("error", event_listener_error);
     ws.on("close", event_listener_close);
