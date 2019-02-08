@@ -4,3 +4,6 @@ Description=Timer for controlling/observing the ESP using the backend
 [Service]
 WorkingDirectory=%h/LedESP8266_timer-js
 ExecStart=/usr/bin/npm start --silent
+
+[Install]
+WantedBy=default.target

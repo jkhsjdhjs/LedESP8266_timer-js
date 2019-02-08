@@ -1,0 +1,33 @@
+{
+    "url": "ws://",
+    "check_interval": 300000,
+    "reconnect_interval": 5000,
+    "reply_timeout": 3000,
+    "state_transition_fade_time": 3000,
+    "states": [
+        {
+            "duration": "9:00:00",
+            "color": {
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        },
+        {
+            "duration": "6:00:00",
+            "color": {
+                "red": 4095,
+                "green": 4095,
+                "blue": 4095
+            }
+        },
+        {
+            "duration": "9:00:00",
+            "color": {
+                "red": 0,
+                "green": 0,
+                "blue": 0
+            }
+        }
+    ]
+}
