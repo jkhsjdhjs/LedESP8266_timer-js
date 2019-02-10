@@ -43,13 +43,11 @@ const color_compare = (c1, c2) =>
 
 const date_add_state_runtime = (date, duration) => {
     const splitted = duration.split(":");
-    console.log(date);
     date.setHours(
         date.getHours() + (parseInt(splitted[0]) || 0),
         date.getMinutes() + (parseInt(splitted[1]) || 0),
         date.getSeconds() + (parseInt(splitted[2]) || 0)
     );
-    console.log(date);
     return date;
 }
 
