@@ -43,11 +43,13 @@ const color_compare = (c1, c2) =>
 
 const date_add_state_runtime = (date, duration) => {
     const splitted = duration.split(":");
+    console.log(date);
     date.setHours(
         date.getHours() + (parseInt(splitted[0]) || 0),
         date.getMinutes() + (parseInt(splitted[1]) || 0),
         date.getSeconds() + (parseInt(splitted[2]) || 0)
     );
+    console.log(date);
     return date;
 }
 
@@ -100,12 +102,12 @@ const change_state_timeout = async ws => {
             if(error !== "timed out waiting for message reply!")
                 throw error;
             console.warn("timed out waiting for message reply, retrying...");
-            await set_color(ws, current_state.color(), cfg.state_transition_fade_time);
+            await set_color(ws, current_state().color, cfg.state_transition_fade_time);
         }
         console.log("color set!");
         const now = new Date();
         const timeout = date_add_state_runtime(new Date(now), current_state().duration);
-        setTimeout(change_state_timeout, ~~(timeout - now), ws);
+        setTimeout(change_state_timeout, timeout - now, ws);
     }
     catch(error) {
         console.error(error);
